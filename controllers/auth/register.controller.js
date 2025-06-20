@@ -1,5 +1,6 @@
 const bcrypt = require('bcryptjs')
 const User = require('../../models/user.model.js')
+const { errorMsg } = require('../../library/functions.js')
 
 class RegisterController {
     register = async (req, res, next) => {
@@ -14,12 +15,7 @@ class RegisterController {
                 message: 'Registration successful!'
             })
         } catch(error) {
-            console.log(error)
-
-            next({
-                message: 'Something went wrong!',
-                status: 400
-            })
+            errorMsg(error, next)
         }
     }
 }

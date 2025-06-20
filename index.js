@@ -13,7 +13,8 @@ app.use(router)
 
 app.use((error, req, res, next) => {
     res.status(error.status || 400).send({
-        message: error.message || 'Problem while processing request!'
+        message: error.message || 'Problem while processing request!',
+        validation: error.validation,
     })
 })
 
