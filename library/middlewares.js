@@ -1,6 +1,7 @@
 const jwt = require('jsonwebtoken')
 const { jwtKey } = require('./constants')
 const User = require('../models/user.model')
+const multer = require('multer')
 
 const auth = async (req, res, next) => {
     try {
@@ -39,4 +40,18 @@ const adminOnly = (req, res, next) => {
     }
 }
 
-module.exports = {auth, adminOnly}
+const upload = () => multer({
+    storage: multer.diskStorage({
+        filename: (req, file, cb) => {
+            const ext = file.originalname.split('.').pop()
+            const filename = Date.now() + '-' + Math.round(Math.random() * 1E9) + `.${ext}`
+
+            cb(null, filename)
+        },
+        destination: (req, file, cb) => {
+            cb(null, './uploads')
+        }
+    })
+})
+
+module.exports = {auth, adminOnly, upload}
