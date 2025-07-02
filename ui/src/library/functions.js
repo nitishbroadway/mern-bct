@@ -1,0 +1,1 @@
+export const imgUrl = filename => `http://localhost:5000/image/${filename}`

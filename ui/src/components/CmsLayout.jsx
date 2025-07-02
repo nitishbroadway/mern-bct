@@ -62,6 +62,18 @@ export const CmsLayout = () => {
                                 <i className="bi bi-people me-2"></i>Authors
                             </Link>
                         </Nav.Item>
+
+                        <Nav.Item>
+                            <Link className="nav-link" to="/cms/articles">
+                                <i className="bi bi-newspaper me-2"></i>Articles
+                            </Link>
+                        </Nav.Item>
+
+                        <Nav.Item>
+                            <Link className="nav-link" to="/cms/comments">
+                                <i className="bi bi-chat me-2"></i>Comments
+                            </Link>
+                        </Nav.Item>
                     </Nav>
 
                     <Nav className="ms-auto">
